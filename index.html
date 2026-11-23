@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
   <a class="skip" href="#content">تخطي إلى المحتوى</a>
@@ -42,6 +42,7 @@
   <main id="content">
     <section class="hero" id="top">
       <div class="hero-copy">
+        <p class="ai-status"><span class="pulse" aria-hidden="true"></span> نظام العرض يعمل · المساعد يصيغ الطلب</p>
         <p class="eyebrow">Smart Vision Nexus · العراق</p>
         <h1>من الفكرة إلى مشروع تخرّج جاهز</h1>
         <p class="lede">نصمّم المشروع وننفّذه، ونبرمج تطبيقه على أندرويد وويندوز وآيفون: من شاشة التحكم حتى التسليم.</p>
@@ -422,6 +423,38 @@
     </section>
 
     <section class="contact" id="contact">
+      <div class="aide" id="aide">
+        <p class="eyebrow">مساعد الطلب</p>
+        <h2>صف فكرتك، والرسالة تنكتب</h2>
+        <p>اختر النوع والنظام، واكتب الاسم والمهلة. المساعد يركّب النص جاهزاً، ثم تنسخه أو ترسله للصفحة.</p>
+        <div class="aide-choices">
+          <div class="aide-row" role="group" aria-label="نوع الطلب">
+            <button type="button" class="chip is-on" data-group="kind" data-value="مشروع تخرج">مشروع تخرج</button>
+            <button type="button" class="chip" data-group="kind" data-value="تطبيق">تطبيق</button>
+            <button type="button" class="chip" data-group="kind" data-value="لعبة">لعبة</button>
+          </div>
+          <div class="aide-row" role="group" aria-label="النظام">
+            <button type="button" class="chip is-on" data-group="system" data-value="أندرويد">أندرويد</button>
+            <button type="button" class="chip" data-group="system" data-value="ويندوز">ويندوز</button>
+            <button type="button" class="chip" data-group="system" data-value="آيفون">آيفون</button>
+            <button type="button" class="chip" data-group="system" data-value="بدون نظام محدد">بدون نظام محدد</button>
+          </div>
+        </div>
+        <div class="aide-fields">
+          <label>اسم المشروع أو التطبيق أو اللعبة
+            <input id="aide-name" type="text" maxlength="80" placeholder="مثال: كاشف لهب">
+          </label>
+          <label>المهلة
+            <input id="aide-time" type="text" maxlength="80" placeholder="مثال: قبل المناقشة بأسبوعين">
+          </label>
+        </div>
+        <p class="kind">الرسالة الجاهزة</p>
+        <p class="aide-out" id="aide-out"></p>
+        <div class="hero-actions">
+          <button type="button" class="btn btn-gold" id="aide-copy">نسخ الرسالة</button>
+          <a class="btn btn-ghost" id="aide-send" href="https://ig.me/m/sv0_9" target="_blank" rel="noopener noreferrer">إرسالها في إنستغرام</a>
+        </div>
+      </div>
       <div>
         <p class="eyebrow">تواصل</p>
         <h2>للتنفيذ، راسل الصفحة</h2>
@@ -446,6 +479,6 @@
     <form method="dialog"><button class="btn btn-gold" type="submit">إغلاق</button></form>
     <img id="shot-img" alt="">
   </dialog>
-  <script src="main.js?v=3"></script>
+  <script src="main.js?v=5"></script>
 </body>
 </html>

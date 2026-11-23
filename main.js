@@ -150,3 +150,59 @@ const heroVideo = document.querySelector("#hero-video");
 heroVideo.addEventListener("error", () => {
   heroVideo.closest(".hero-reel").classList.add("is-missing");
 });
+
+const aide = {
+  kind: "مشروع تخرج",
+  system: "أندرويد"
+};
+const aideOut = document.querySelector("#aide-out");
+const aideCopy = document.querySelector("#aide-copy");
+
+function aideMessage() {
+  const name = document.querySelector("#aide-name").value.trim() || "سأذكر الاسم في الرسالة";
+  const time = document.querySelector("#aide-time").value.trim() || "سأحدد المهلة لاحقاً";
+  return `السلام عليكم\nأريد ${aide.kind}: ${name}\nالنظام: ${aide.system}\nالمهلة: ${time}\n@sv0_9`;
+}
+
+function renderAide() {
+  aideOut.replaceChildren();
+  aideMessage().split("\n").forEach((line, index) => {
+    if (index) aideOut.appendChild(document.createElement("br"));
+    const span = document.createElement("span");
+    if (line.startsWith("@")) {
+      span.dir = "ltr";
+      span.style.unicodeBidi = "isolate";
+    }
+    span.textContent = line;
+    aideOut.appendChild(span);
+  });
+}
+
+document.querySelectorAll(".aide .chip").forEach((chip) => {
+  chip.addEventListener("click", () => {
+    const group = chip.dataset.group;
+    aide[group] = chip.dataset.value;
+    document.querySelectorAll(`.aide .chip[data-group="${group}"]`).forEach((item) => {
+      item.classList.toggle("is-on", item === chip);
+    });
+    renderAide();
+  });
+});
+document.querySelector("#aide-name").addEventListener("input", renderAide);
+document.querySelector("#aide-time").addEventListener("input", renderAide);
+aideCopy.addEventListener("click", async () => {
+  const text = aideMessage();
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (error) {
+    const area = document.createElement("textarea");
+    area.value = text;
+    document.body.appendChild(area);
+    area.select();
+    document.execCommand("copy");
+    area.remove();
+  }
+  aideCopy.textContent = "تم النسخ";
+  setTimeout(() => { aideCopy.textContent = "نسخ الرسالة"; }, 1600);
+});
+renderAide();
