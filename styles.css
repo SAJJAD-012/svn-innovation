@@ -44,7 +44,7 @@ p { margin: 0; }
   backdrop-filter: blur(14px);
   padding-top: env(safe-area-inset-top);
 }
-.header-inner, .hero, .services, .apps, .works, .reels, .ideas, .process, .contact, .site-footer {
+.header-inner, .hero, .services, .posts, .apps, .works, .reels, .ideas, .process, .contact, .site-footer {
   width: min(var(--max), calc(100% - 32px));
   margin-inline: auto;
 }
@@ -98,6 +98,30 @@ h2 { font-size: clamp(1.5rem, 2.5vw, 2.1rem); }
 .services {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; padding: 28px 0 8px;
 }
+.posts { padding: 36px 0 12px; }
+.post-feature {
+  display: grid; grid-template-columns: minmax(240px, 0.72fr) 1.28fr; gap: 0;
+  align-items: stretch; background: var(--card); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 22px; overflow: hidden; margin-bottom: 14px;
+}
+.post-feature img {
+  width: 100%; height: 100%; min-height: 320px; max-height: 640px; object-fit: contain;
+  object-position: center; display: block; background: #090b10;
+}
+.post-copy { padding: 22px 22px 26px; display: flex; flex-direction: column; justify-content: center; }
+.post-copy h3 { font-size: clamp(1.35rem, 2vw, 1.8rem); }
+.post-copy p { color: var(--muted); margin-top: 8px; }
+.kind { margin: 0 0 8px; color: var(--gold); font-weight: 800; font-size: 0.85rem; }
+.post-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.post-card {
+  background: var(--card); border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; overflow: hidden;
+}
+.post-card img {
+  width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; display: block; background: #090b10;
+}
+.post-card div { padding: 12px 14px 16px; }
+.post-card h3 { font-size: 1.05rem; }
+.post-card p { color: var(--muted); }
 .promo-video {
   width: 100%; aspect-ratio: 16/9; display: block; margin: 0 0 28px;
   background: #05060a; border-radius: 22px; border: 1px solid var(--line);
@@ -244,13 +268,15 @@ h2 { font-size: clamp(1.5rem, 2.5vw, 2.1rem); }
   .nav-ig { justify-content: center; }
 }
 @media (max-width: 980px) {
-  .hero, .services, .reel-grid, .design-grid, .steps, .promises, .contact, .simple-grid, .app-grid, .app-steps, .work-grid { grid-template-columns: 1fr 1fr; }
+  .hero, .services, .reel-grid, .design-grid, .steps, .promises, .contact, .simple-grid, .app-grid, .app-steps, .work-grid, .post-grid { grid-template-columns: 1fr 1fr; }
+  .post-feature { grid-template-columns: 1fr; }
+  .post-feature img { max-height: 520px; }
   .services { grid-template-columns: 1fr 1fr; }
   .steps, .promises { grid-template-columns: 1fr 1fr; }
   .contact { grid-template-columns: 1fr; }
 }
 @media (max-width: 760px) {
-  .hero, .services, .reel-grid, .design-grid, .steps, .promises, .simple-grid, .app-grid, .app-steps, .work-grid, .work-shots { grid-template-columns: 1fr; }
+  .hero, .services, .reel-grid, .design-grid, .steps, .promises, .simple-grid, .app-grid, .app-steps, .work-grid, .work-shots, .post-grid, .post-feature { grid-template-columns: 1fr; }
   .chapter-head { flex-direction: column; align-items: stretch; }
   .hero { padding-top: 28px; gap: 22px; }
   .hero-actions .btn { flex: 1 1 100%; text-align: center; }

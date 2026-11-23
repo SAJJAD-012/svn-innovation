@@ -101,7 +101,7 @@ chaptersEl.innerHTML = chapters.map((chapter) => `
           <div class="design-body">
             <div class="design-top">
               <span class="idea-no">${no}</span>
-              <span class="pill ${origin === "كتالوج" ? "is-old" : "is-new"}">${origin}</span>
+              <span class="pill ${origin === "كتالوج" ? "is-old" : "is-new"}">${origin === "كتالوج" ? "من المنشور" : "مقترح"}</span>
             </div>
             <h4>${title}</h4>
             <p>${text}</p>
